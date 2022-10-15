@@ -1,3 +1,6 @@
+import { Box } from '../Box';
+import { Text } from './Statistics.styled';
+
 export const Statistics = ({
   good,
   neutral,
@@ -6,12 +9,12 @@ export const Statistics = ({
   positivePercentage,
 }) => {
   return (
-    <>
-      <p>Good: {good}</p>
-      <p>Neutral: {neutral}</p>
-      <p>Bad: {bad}</p>
-      <p>Total: {total}</p>
-      <p>Positive feedback: {positivePercentage}%</p>
-    </>
+    <Box p={2} display="flex" flexDirection="column">
+      <Text>Good: {good}</Text>
+      <Text>Neutral: {neutral}</Text>
+      <Text>Bad: {bad}</Text>
+      <Text>Total: {total}</Text>
+      <Text>Positive feedback: {positivePercentage}%</Text>
+    </Box>
   );
 };

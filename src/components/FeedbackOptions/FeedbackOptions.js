@@ -1,11 +1,17 @@
+import { Box } from '../Box';
+import { FeedbackButton } from './FeedbackOptions.styled';
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
-    <div>
+    <Box display="flex" p={3}>
       {options.map((option, i) => (
-        <button type="button" key={i} onClick={() => onLeaveFeedback(option)}>
+        <FeedbackButton
+          type="button"
+          key={i}
+          onClick={() => onLeaveFeedback(option)}
+        >
           {option.toUpperCase()}
-        </button>
+        </FeedbackButton>
       ))}
-    </div>
+    </Box>
   );
 };

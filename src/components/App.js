@@ -38,7 +38,7 @@ export class App extends Component {
     const totalFb = this.countTotalFeedback();
     const { good, neutral, bad } = this.state;
     return (
-      <Box p={4}>
+      <Box p={5} display="flex" flexDirection="column" as="main">
         <Section title="Please leave feedback">
           <FeedbackOptions
             options={options}

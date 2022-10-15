@@ -1,8 +1,10 @@
+import { Box } from '../Box';
+import { Title } from './Section.styled';
 export const Section = ({ title, children }) => {
   return (
-    <>
-      <h2>{title}</h2>
+    <Box display="flex" flexDirection="column" p={4} as="section">
+      <Title>{title}</Title>
       {children}
-    </>
+    </Box>
   );
 };
