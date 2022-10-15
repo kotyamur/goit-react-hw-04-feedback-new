@@ -9,10 +9,24 @@ export class App extends Component {
   };
 
   addFeedback = option => {
-    console.log(option);
     this.setState(prevState => ({
       [option]: prevState[option] + 1,
     }));
+  };
+
+  countTotalFeedback = () => {
+    const optionsValue = Object.values(this.state);
+    return optionsValue.reduce((acc, value) => value + acc, 0);
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    const total = this.countTotalFeedback();
+    const goodFb = this.state.good;
+    if (total === 0) {
+      return 0;
+    }
+    const positiveFbPercentage = (goodFb / total) * 100;
+    return positiveFbPercentage.toFixed();
   };
 
   render() {
@@ -36,6 +50,8 @@ export class App extends Component {
         <p>Good: {this.state.good}</p>
         <p>Neutral: {this.state.neutral}</p>
         <p>Bad: {this.state.bad}</p>
+        <p>Total: {this.countTotalFeedback()}</p>
+        <p>Positive feedback: {this.countPositiveFeedbackPercentage()}%</p>
       </Box>
     );
   }
