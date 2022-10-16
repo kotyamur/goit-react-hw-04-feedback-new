@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Box } from '../Box';
 import { Title } from './Section.styled';
 export const Section = ({ title, children }) => {
@@ -7,4 +8,8 @@ export const Section = ({ title, children }) => {
       {children}
     </Box>
   );
+};
+
+Notification.propTypes = {
+  title: PropTypes.string,
 };
