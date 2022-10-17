@@ -23,20 +23,16 @@ export class App extends Component {
     return optionsValue.reduce((acc, value) => value + acc, 0);
   };
 
-  countPositiveFeedbackPercentage = () => {
-    const total = this.countTotalFeedback();
-    const goodFb = this.state.good;
-    if (total === 0) {
-      return 0;
-    }
-    const positiveFbPercentage = (goodFb / total) * 100;
-    return positiveFbPercentage.toFixed();
-  };
+  countFeedbackPercentage = (amount, total) =>
+    Math.round(total ? (amount / total) * 100 : 0);
 
   render() {
     const options = Object.keys(this.state);
     const totalFb = this.countTotalFeedback();
-    const { good, neutral, bad } = this.state;
+    const positivePercentage = this.countFeedbackPercentage(
+      this.state.good,
+      totalFb
+    );
     return (
       <Box p={5} display="flex" flexDirection="column" as="main">
         <Section title="Please leave feedback">
@@ -49,11 +45,9 @@ export class App extends Component {
         <Section title="Statistics">
           {totalFb > 0 ? (
             <Statistics
-              good={good}
-              neutral={neutral}
-              bad={bad}
+              {...this.state}
               total={totalFb}
-              positivePercentage={this.countPositiveFeedbackPercentage()}
+              positivePercentage={positivePercentage}
             />
           ) : (
             <Notification message="There is no feedback" />
