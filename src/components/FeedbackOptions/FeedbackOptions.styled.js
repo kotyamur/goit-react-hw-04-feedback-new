@@ -10,6 +10,7 @@ export const FeedbackButton = styled.button`
   color: ${p => p.theme.colors.white};
   background-color: ${p => p.theme.colors.blue};
   border-radius: ${p => p.theme.radii.sm};
+  text-transform: uppercase;
   :not(:last-child) {
     margin-right: ${p => p.theme.space[4]}px;
   }
