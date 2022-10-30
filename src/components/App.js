@@ -31,20 +31,18 @@ export const App = () => {
 
   const totalFb = good + neutral + bad;
   const positivePercentage = countFeedbackPercentage(good, totalFb);
+  const options = { good, neutral, bad };
 
   return (
     <Box p={5} display="flex" flexDirection="column" as="main">
       <Section title="Please leave feedback">
-        <FeedbackOptions
-          options={{ good, neutral, bad }}
-          onLeaveFeedback={addFeedback}
-        />
+        <FeedbackOptions options={options} onLeaveFeedback={addFeedback} />
       </Section>
 
       <Section title="Statistics">
         {totalFb > 0 ? (
           <Statistics
-            {...{ good, neutral, bad }}
+            options={options}
             total={totalFb}
             positivePercentage={positivePercentage}
           />
